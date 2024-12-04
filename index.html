@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Pizza Company - Order Form</title>
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background-pizza.jpg'); /* Replace with your pizza background image */
+            background-size: cover; /* Cover the entire screen */
+            background-repeat: no-repeat; /* Do not repeat */
+            background-attachment: fixed; /* Fixed during scrolling */
+            color: #000; /* Black text for good contrast */
+        }
+
+        /* Header and Footer */
+        header, footer {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+            color: #fff; /* White text */
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        /* Main Content Section */
+        main {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.9); /* Light transparent background */
+            color: #000; /* Black text for contrast */
+        }
+
+        /* Fieldset and Form Elements */
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .inline-label {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff4500; /* Orange button */
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #d13600; /* Darker orange on hover */
+        }
+
+        p img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%; /* Makes image responsive */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the HTML Pizza Company!</h1>
+        <p>Your favorite pizza, just a few clicks away!</p>
+    </header>
+    <main>
+        <h2>Order Your Pizza</h2>
+           <form action="process_order.php" method="POST">
+            <!-- Customer Information -->
+            <fieldset>
+                <legend>Customer Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="customer_name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="customer_email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="customer_phone" required>
+            </fieldset>
+
+            <!-- Pizza Details -->
+            <fieldset>
+                <legend>Pizza Details</legend>
+
+                <label for="number">Number of Pizzas:</label>
+                <input type="number" id="number" name="pizza_count" min="1" max="10" required>
+
+                <label for="size">Pizza Size:</label>
+                <select id="size" name="pizza_size" required>
+                    <option value="small">Small (6 slices)</option>
+                    <option value="medium">Medium (8 slices)</option>
+                    <option value="large">Large (12 slices)</option>
+                </select>
+
+                <p>Crust Type:</p>
+                <label class="inline-label"><input type="radio" name="crust" value="thin" required> Thin Crust</label>
+                <label class="inline-label"><input type="radio" name="crust" value="deep"> Deep Dish</label>
+                <label class="inline-label"><input type="radio" name="crust" value="stuffed"> Stuffed Crust</label>
+
+                <p>Toppings:</p>
+                <label><input type="checkbox" name="toppings[]" value="pepperoni"> Pepperoni</label>
+                <label><input type="checkbox" name="toppings[]" value="mushrooms"> Mushrooms</label>
+                <label><input type="checkbox" name="toppings[]" value="onions"> Onions</label>
+                <label><input type="checkbox" name="toppings[]" value="olives"> Olives</label>
+                <label><input type="checkbox" name="toppings[]" value="extra_cheese"> Extra Cheese</label>
+            </fieldset>
+
+            <!-- Delivery Options -->
+            <fieldset>
+                <legend>Delivery Options</legend>
+                <label for="delivery-method">How would you like your pizza?</label>
+                <select id="delivery-method" name="delivery_method" required>
+                    <option value="takeout">Takeout</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="dine_in">Dine-In</option>
+                </select>
+
+                <label for="delivery-date">Preferred Delivery Date:</label>
+                <input type="date" id="delivery-date" name="delivery_date">
+
+                <label for="comments">Special Instructions:</label>
+                <textarea id="comments" name="special_instructions" rows="3" placeholder="Let us know any special instructions..."></textarea>
+            </fieldset>
+
+            <!-- Submit -->
+            <input type="submit" value="Submit Order">
+            <input type="reset" value="Reset Form">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 HTML Pizza Company</p>
+    </footer>
+</body>
+</html>
+
+
